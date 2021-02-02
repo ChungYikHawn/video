@@ -1,0 +1,20 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/searchVideo/searchVideo",
+    "pages/videoinfo/videoinfo",
+    "pages/userLogin/login",
+    "pages/chooseBgm/chooseBgm",
+    "pages/mine/mine",
+    "pages/userRegist/regist"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "一航短视频",
+    "navigationBarTextStyle":"black"
+  },
+  "debug": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

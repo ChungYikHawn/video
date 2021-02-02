@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hang.hangvideosdev.mapper.BgmDao">
+  <resultMap id="BaseResultMap" type="com.hang.hangvideosdev.pojo.Bgm">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, author, `name`, `path`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bgm
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bgm
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hang.hangvideosdev.pojo.Bgm" useGeneratedKeys="true">
+    insert into bgm (author, `name`, `path`
+      )
+    values (#{author,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hang.hangvideosdev.pojo.Bgm" useGeneratedKeys="true">
+    insert into bgm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="author != null">
+        author,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="path != null">
+        `path`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hang.hangvideosdev.pojo.Bgm">
+    update bgm
+    <set>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        `path` = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hang.hangvideosdev.pojo.Bgm">
+    update bgm
+    set author = #{author,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `path` = #{path,jdbcType=VARCHAR}
+    where id = #{id,
+    jdbcType=VARCHAR}
+  </update>
+
+  <select id="list" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from bgm
+  </select>
+
+  <select id="queryBgmById" resultMap="BaseResultMap" parameterType="string">
+    select <include refid="Base_Column_List"></include>
+    from bgm
+    where id=#{bgmId}
+  </select>
+</mapper>
