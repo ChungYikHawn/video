@@ -48,7 +48,7 @@ Page({
                app.setGlobalUserInfo(res.data.data);
               // 页面跳转
                 wx.redirectTo({
-                  url: '../mine/mine',
+                  url: '../userLogin/login',
                 })
             } else if (status == 500) {
               wx.showToast({
